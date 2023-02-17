@@ -1,0 +1,17 @@
+spring:
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      config:
+        enabled: true
+        format: YAML
+        data-key: data
+        watch:
+          enabled: true
+        prefix: micro
+      discovery:
+        healthCheckPath: /actuator/health
+        healthCheckInterval: 15s
+        prefer-ip-address: true
+        ip-address: 127.0.0.1

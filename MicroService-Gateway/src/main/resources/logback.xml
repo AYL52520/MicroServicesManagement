@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+    <property name="log.name" value="microGateway"/>
+    <property name="log.path" value="./logs"/>
+    <property name="log.charset" value="UTF-8"/>
+    <property name="log.pattern.console"
+              value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(-){faint} %clr([%15.15t]){faint} %clr([%-20.20X{ID}]){red} %clr([%-32.32X{SEQ_NO}]){red} %clr([%36X{ENT_REG_ID}]){red} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n"/>
+    <property name="log.pattern.file"
+              value="%d{yyyy-MM-dd'T'HH:mm:ss.SSS} %p %t [%X{ID}] [%X{SEQ_NO}] [%X{ENT_REG_ID}] %logger : %m%n"/>
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>${log.pattern.console}</Pattern>
+            <charset>${log.charset}</charset>
+        </encoder>
+    </appender>
+    <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/${log.name}.log</file>
+        <encoder>
+            <pattern>${log.pattern.file}</pattern>
+            <charset>${log.charset}</charset>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/${log.name}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>50MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+    </appender>
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </root>
+    <logger name="com.micro.gateway" level="debug" additivity="false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+    </logger>
+</configuration>
