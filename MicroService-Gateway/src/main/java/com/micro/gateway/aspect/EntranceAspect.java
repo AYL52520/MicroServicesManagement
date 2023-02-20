@@ -1,6 +1,6 @@
 package com.micro.gateway.aspect;
 
-import com.micro.gateway.bean.GatewayFlowLog;
+import com.micro.gateway.pojo.GatewayFlowLog;
 import com.micro.gateway.data.FlowLogThreadLocal;
 import com.micro.gateway.data.Response;
 import com.micro.gateway.service.IFlowLogService;
@@ -64,6 +64,7 @@ public class EntranceAspect {
             boolean flag = flowLogService.insertFlow(FlowLogThreadLocal.getFlowLog()); //记录完日志销毁对象
             if(flag) log.info("流水落地成功！");
             else log.info("流水落地失败！");
+            // 清空该对象
             FlowLogThreadLocal.remove();
         }
         return proceed;

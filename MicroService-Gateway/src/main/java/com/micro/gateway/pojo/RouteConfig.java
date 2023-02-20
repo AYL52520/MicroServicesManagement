@@ -4,7 +4,7 @@ import lombok.Data;
 
 /**
  * @Classname RouteConfig
- * @Description TODO
+ * 数据库方式实现
  * @Version 1.0.0
  * @Date 2023/1/31 21:04
  * @Created by yangle

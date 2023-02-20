@@ -1,7 +1,7 @@
 package com.micro.gateway.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.micro.gateway.bean.GatewayFlowLog;
+import com.micro.gateway.pojo.GatewayFlowLog;
 import com.micro.gateway.data.FlowLogThreadLocal;
 import com.micro.gateway.data.Request;
 import com.micro.gateway.data.Response;

@@ -20,7 +20,7 @@ public class RouteConfigServiceImpl implements IRouteConfigService {
         //根据mid 和 JWID查询
         RouteConfig routeConfig = new RouteConfig();
         routeConfig.setJwId(jwid);
-        routeConfig.setJwId(mid);
+        routeConfig.setMid(mid);
         routeConfig.setUrl("http://127.0.0.1:9090");
         return routeConfig;
     }

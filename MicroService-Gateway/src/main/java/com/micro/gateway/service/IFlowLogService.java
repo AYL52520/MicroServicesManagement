@@ -1,6 +1,6 @@
 package com.micro.gateway.service;
 
-import com.micro.gateway.bean.GatewayFlowLog;
+import com.micro.gateway.pojo.GatewayFlowLog;
 
 /**
  * @Classname IFlowLogService

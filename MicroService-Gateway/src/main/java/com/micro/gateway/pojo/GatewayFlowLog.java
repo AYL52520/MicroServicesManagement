@@ -1,4 +1,4 @@
-package com.micro.gateway.bean;
+package com.micro.gateway.pojo;
 
 import lombok.Data;
 

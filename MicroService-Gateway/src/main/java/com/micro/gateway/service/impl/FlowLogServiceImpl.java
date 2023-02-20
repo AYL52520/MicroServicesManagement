@@ -1,6 +1,6 @@
 package com.micro.gateway.service.impl;
 
-import com.micro.gateway.bean.GatewayFlowLog;
+import com.micro.gateway.pojo.GatewayFlowLog;
 import com.micro.gateway.service.IFlowLogService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.micro.gateway.filter;
 
 import com.alibaba.fastjson.JSON;
-import com.micro.gateway.bean.GatewayFlowLog;
+import com.micro.gateway.pojo.GatewayFlowLog;
 import com.micro.gateway.data.FlowLogThreadLocal;
 import com.micro.gateway.util.TimeUtil;
 import lombok.extern.log4j.Log4j2;
