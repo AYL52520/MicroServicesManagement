@@ -3,7 +3,7 @@ package com.micro.gateway.config;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
-import org.springframework.stereotype.Component;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * 基于配置实现路由
  */
 @Data
-@Component(RouteConfiguration.NAME)
+@Log4j2
 public class RouteConfiguration extends ConcurrentHashMap<String, RouteConfiguration.Route> implements Listable,Loadable,Saveable{
     public static final String NAME = "routeConfiguration";
 
