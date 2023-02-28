@@ -1,37 +1,5 @@
-#端口号
-server:
-  port: 9090
 spring:
-  application:
-    name: micro-gateway
-  profiles:
-    active: dev
   cloud:
-    consul:
-      #consul服务地址
-      host: localhost
-      port: 8500
-      #配置中心
-      config:
-        enabled: true
-        #配置中心的路径
-        prefix: config
-        #路径下基本文件夹
-        default-context: microGateway
-        #文件夹分隔符
-        profile-separator: '-'
-        #格式
-        format: yaml
-        #配置文件的名称
-        data-key: microGatewayConfig
-        watch:
-          enabled: true
-          #刷新频率 毫秒
-          delay: 1000
-      discovery:
-        register: true
-        instance-id: micro-gateway
-        service-name: micro-gateway
-        port: ${server.port}
-        prefer-ip-address: true
-        ip-address: ${spring.cloud.client.ip-address}
+    gateway:
+      httpclient:
+        max-header-size: 65565

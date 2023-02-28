@@ -1,0 +1,27 @@
+consulPath: config/microGateway-dev/microGatewayConfig
+routeconfiguration:
+  route:
+    chengdu:
+      id: chengdu
+      uri: http://127.0.0.1:8080
+      predicates:
+        - name: Path
+          args:
+            _genkey_0: "/test/**"
+      filters:
+        - name: AddResponseHeader
+          args:
+            _genkey_0: X-Request-Foo
+            _genkey_1: Bar
+    changsha:
+      id: changsha
+      uri: http://127.0.0.1:8080
+      predicates:
+        - name: Path
+          args:
+            _genkey_0: "/test2/**"
+      filters:
+        - name: AddResponseHeader
+          args:
+            _genkey_0: X-Request-Foo
+            _genkey_1: Bar
