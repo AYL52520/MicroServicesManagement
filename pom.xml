@@ -4,6 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <modules>
         <module>MicroService-Gateway</module>
+        <module>MicroService-Common</module>
+        <module>MicroService-Service</module>
     </modules>
     <groupId>com.yang</groupId>
     <artifactId>micro-service</artifactId>
@@ -70,7 +72,11 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8</version>
+        </dependency>
     </dependencies>
 
     <build>

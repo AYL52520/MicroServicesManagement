@@ -3,3 +3,8 @@ spring:
     gateway:
       httpclient:
         max-header-size: 65565
+        pool:
+          max-idle-time: PT1S
+server:
+  ssl:
+    enabled: false

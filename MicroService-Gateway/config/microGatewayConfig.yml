@@ -1,21 +1,31 @@
 consulPath: config/microGateway-dev/microGatewayConfig
 routeconfiguration:
+  privateKey: ecadccdddad2cd710f41ac21c8b885611e922fb498e5aa8c9c84917d8efbb59a
+  publicKey: 04cff340b22c038aed1401e12f851b97c197472c16cedd0633c258f97569c0fce0c784ce786ec722300f50c2ad000eccbb1e1375dd00bb3a2abd5186513e6afa67
   route:
     chengdu:
       id: chengdu
-      uri: http://127.0.0.1:8080
+      uri: lb://MicroService-Service
       predicates:
         - name: Path
           args:
             _genkey_0: "/test/**"
       filters:
-        - name: AddResponseHeader
+        - name: CheckHeader
           args:
-            _genkey_0: X-Request-Foo
-            _genkey_1: Bar
+            _genkey_0: true
+            _genkey_1: -4
+        - name: DecryptAndSignCheck
+          args:
+            _genkey_0: true
+            _genkey_1: -3
+        - name: SignAndEncrypt
+          args:
+            _genkey_0: true
+            _genkey_1: -2
     changsha:
       id: changsha
-      uri: http://127.0.0.1:8080
+      uri: http://127.0.0.1:8006
       predicates:
         - name: Path
           args:

@@ -1,6 +1,8 @@
 #端口号
 server:
   port: 9090
+  ssl:
+    enabled: false
 spring:
   application:
     name: micro-gateway
@@ -35,3 +37,20 @@ spring:
         port: ${server.port}
         prefer-ip-address: true
         ip-address: ${spring.cloud.client.ip-address}
+
+---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+---
+spring:
+  cloud:
+    gateway:
+      httpclient:
+        max-header-size: 65565
+        pool:
+          maxIdleTime: PT1S
+

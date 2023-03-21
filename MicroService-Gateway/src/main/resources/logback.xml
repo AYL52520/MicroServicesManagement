@@ -32,7 +32,7 @@
         <appender-ref ref="console"/>
         <appender-ref ref="rollingFile"/>
     </root>
-    <logger name="com.micro.gateway" level="debug" additivity="false">
+    <logger name="com.micro.service" level="debug" additivity="false">
         <appender-ref ref="console"/>
         <appender-ref ref="rollingFile"/>
     </logger>
