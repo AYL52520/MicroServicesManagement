@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import yang.micro.exception.SDKExceptionEnums;
 
 @Data
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class Response {
 	@JsonProperty("HEAD")
 	@JSONField(name = "HEAD")

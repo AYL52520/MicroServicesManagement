@@ -13,6 +13,7 @@ import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 
 /**
@@ -31,7 +32,7 @@ public class RestTempHttpReqInterceptor implements ClientHttpRequestInterceptor 
         //记录请求信息 - 记录请求时间
         HttpHeaders headers = request.getHeaders();
         log.info("RestTemplate记录请求信息: URL={},请求信息={},请求头={}",
-                request.getURI(),new String(body,"UTF-8"), JSON.toJSONString(headers));
+                request.getURI(),new String(body, StandardCharsets.UTF_8), JSON.toJSONString(headers));
         flowLog.setRouteReqTime(TimeUtil.format(Instant.now()));
         ClientHttpResponse response = execution.execute(request, body);
         flowLog.setRouteReqTime(TimeUtil.format(Instant.now()));

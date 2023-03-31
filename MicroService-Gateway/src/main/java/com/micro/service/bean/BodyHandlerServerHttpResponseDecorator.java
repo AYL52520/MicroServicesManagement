@@ -25,7 +25,6 @@ public class BodyHandlerServerHttpResponseDecorator
 
     /**
      * 构造函数
-     *
      * @param bodyHandler
      * @param delegate
      */

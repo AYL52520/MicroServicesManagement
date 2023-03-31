@@ -4,19 +4,15 @@ import com.micro.service.bean.BodyHandlerFunction;
 import com.micro.service.bean.BodyHandlerServerHttpResponseDecorator;
 import com.micro.service.data.TokenThreadLocal;
 import lombok.extern.log4j.Log4j2;
-import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.core.Ordered;
-import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferFactory;
 import org.springframework.core.io.buffer.DataBufferUtils;
-import org.springframework.core.io.buffer.DefaultDataBufferFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpResponse;
-import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
@@ -25,7 +21,6 @@ import yang.micro.exception.SDKException;
 import yang.micro.uitl.GMEncryptionUtils;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
@@ -112,38 +107,6 @@ public class SignAndEncryptGatewayFilterFactory extends AbstractGatewayFilterFac
             //构建响应包装类
             BodyHandlerServerHttpResponseDecorator responseDecorator = new BodyHandlerServerHttpResponseDecorator(
                     bodyHandler, exchange.getResponse());
-/*            ServerHttpResponseDecorator decoratedResponse = new ServerHttpResponseDecorator(originalResponse) {
-                @Override
-                public Mono<Void> writeWith(Publisher<? extends DataBuffer> body) {
-                    if (body instanceof Flux) {
-                        Flux<? extends DataBuffer> fluxBody = Flux.from(body);
-                        return super.writeWith(fluxBody.buffer().map(dataBuffer -> {
-
-                            DataBufferFactory dataBufferFactory = new DefaultDataBufferFactory();
-                            DataBuffer join = dataBufferFactory.join(dataBuffer);
-
-                            byte[] content = new byte[join.readableByteCount()];
-                            join.read(content);
-                            //释放掉内存
-                            DataBufferUtils.release(join);
-                            // 正常返回的数据
-                            String rootData = new String(content, Charset.forName("UTF-8"));
-//                            byte[] respData = rootData.getBytes();
-                            String encryptStr = "";
-                            try {
-                                encryptStr = GMEncryptionUtils.encryptToH5Date(privateKey, token, rootData);
-                            } catch (SDKException | IOException e) {
-                                e.printStackTrace();
-                            }
-                            // 加密后的数据返回给客户端
-                            byte[] uppedContent = encryptStr.getBytes(StandardCharsets.UTF_8);
-                            return bufferFactory.wrap(uppedContent);
-                        }));
-                    }
-                    return super.writeWith(body);
-                }
-            };*/
-
             return chain.filter(exchange.mutate().response(responseDecorator).build());
         }
 
